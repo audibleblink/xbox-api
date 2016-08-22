@@ -41,10 +41,15 @@ logan.gamercard
 The client also respond to `#calls_remaining`
 
 ```ruby
-live.calls_remaining
+client.calls_remaining
 #=> {:limit=>"120", :remaining=>"112", :resets_in=>"452"}
 ```
 
+You can fetch Xbox game details using either a games title id or game id in hex format
+
+```ruby
+client.game_details(1708767297)
+```
 
 If one already has a gamer's XUID, the API lookup normally required to fetch an XUID during initialization may be skipped by passing in a client instance and the gamer's XUID as the third argument.
 
@@ -88,3 +93,4 @@ xbl token
 | xbox360games    | /v2/{xuid}/xbox360games    | This is the Xbox 360 Games List for a specified XUID|
 | xboxonegames    | /v2/{xuid}/xboxonegames    | This is the Xbox One Games List for a specified XUID|
 | game_clips      | /v2/{xuid}/game-clips      | This is the current collection of clips for a specified XUID|
+| game-details-hex| /v2/game-details-hex/{id}  | This is the Xbox Game Information (using the game id in hex format)|

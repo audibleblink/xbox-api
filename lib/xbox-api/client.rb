@@ -13,6 +13,12 @@ module XboxApi
       XboxApi::Gamer.new(tag, self)
     end
 
+    def game_details(id)
+      id = id.to_s(16) if id.is_a?(Integer)
+      endpoint = "game-details-hex/#{id}"
+      fetch_body_and_parse(endpoint)
+    end
+
     def fetch_body_and_parse(endpoint)
       parse(get_with_token(endpoint).read)
     end
