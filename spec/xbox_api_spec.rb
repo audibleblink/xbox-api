@@ -25,6 +25,24 @@ let(:gamer)  { VCR.use_cassette("gamer") { client.gamer("audibleblink") } }
         end
       end
     end
+
+    context "#game_details" do 
+      it "returns a hash with the correct info using title id" do
+        VCR.use_cassette("game_details") do
+          response = client.game_details(1708767297)
+          expect(response).to be_a_kind_of Hash
+          expect(response.keys.length).to eq 2
+        end
+      end
+
+      it "returns a hash with the correct info using hex game id" do
+        VCR.use_cassette("game_details") do
+          response = client.game_details('65d9b841')
+          expect(response).to be_a_kind_of Hash
+          expect(response.keys.length).to eq 2
+        end
+      end
+    end
   end
 
 
