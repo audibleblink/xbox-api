@@ -12,8 +12,7 @@ module XboxApi
       :followers,
       :xbox360games,
       :xboxonegames,
-      :game_clips,
-      :messages
+      :game_clips
     ]
 
     def initialize(gamertag, client, xuid=nil)
@@ -32,6 +31,11 @@ module XboxApi
     def recent_activity
       endpoint = "#{xuid}/activity/recent"
       client.fetch_body_and_parse( endpoint )
+    end
+
+    def send_message(to, message)
+      endpoint = "messages"
+      client.post_body_and_parse( endpoint, {"to" => to, "message" => message} )
     end
 
     # TODO: These don't belong here
