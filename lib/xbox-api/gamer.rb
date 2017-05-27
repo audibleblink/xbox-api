@@ -12,7 +12,8 @@ module XboxApi
       :followers,
       :xbox360games,
       :xboxonegames,
-      :game_clips
+      :game_clips,
+      :messages
     ]
 
     def initialize(gamertag, client, xuid=nil)
