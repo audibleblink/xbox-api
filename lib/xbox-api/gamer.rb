@@ -33,6 +33,11 @@ module XboxApi
       client.fetch_body_and_parse( endpoint )
     end
 
+    def send_message(to, message)
+      endpoint = "messages"
+      client.post_body_and_parse( endpoint, {"to" => to, "message" => message} )
+    end
+
     # TODO: These don't belong here
     # [:messages, :recent_players].each do |action|
     #   define_method(action) do
